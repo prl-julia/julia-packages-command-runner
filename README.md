@@ -39,13 +39,51 @@ repo and create a `scratch` subdir:
   [3b2b4ff1] Multisets v0.4.4
   [2a0f44e3] Base64 `@stdlib/Base64`
   [b77e0a4c] InteractiveUtils `@stdlib/InteractiveUtils`
-  [56ddb016] Logging `@stdlib/Logging`
-  [d6f4376e] Markdown `@stdlib/Markdown`
-  [9a3f8284] Random `@stdlib/Random`
-  [ea8e919c] SHA v0.7.0 `@stdlib/SHA`
-  [9e88b42a] Serialization `@stdlib/Serialization`
-  [8dfed614] Test `@stdlib/Test`
+  ...
      Testing Running tests...
      Testing Multisets tests passed 
 
+```
+
+# Example run on list of packages
+
+``` shellsession
+❯ BATCH=true ../proc_package_parallel.sh ../pkg-list-sample.txt
+
+❯ exa -T -L 2
+.
+├── MethodAnalysis
+│  ├── depot
+│  ├── test-out.txt
+│  └── test-result.txt
+└── Multisets
+   ├── depot
+   ├── test-out.txt
+   └── test-result.txt
+
+❯ cat MethodAnalysis/test-out.txt
+    Updating registry at `/mnt/data/artem/Code/julia-projects/julia-packages-test-runner/scratch/MethodAnalysis/depot/registries/General.toml`
+   Resolving package versions...
+  No Changes to `/mnt/data/artem/Code/julia-projects/julia-packages-test-runner/scratch/MethodAnalysis/depot/environments/v1.8/Project.toml`
+  No Changes to `/mnt/data/artem/Code/julia-projects/julia-packages-test-runner/scratch/MethodAnalysis/depot/environments/v1.8/Manifest.toml`
+     Testing MethodAnalysis
+      Status `/tmp/jl_43pbeJ/Project.toml`
+  [1520ce14] AbstractTrees v0.4.4
+  [a09fc81d] ImageCore v0.10.1
+  [85b6ec6f] MethodAnalysis v0.4.13
+  ...
+
+Test Summary:            | Pass  Total  Time
+methodinstances_owned_by |    6      6  0.6s
+Test Summary: | Pass  Total  Time
+Backedges     |   26     26  0.4s
+Test Summary: | Pass  Total  Time
+call_type     |    2      2  0.0s
+Test Summary: | Pass  Total  Time
+Invalidation  |    3      3  0.1s
+Test Summary: | Pass  Total  Time
+hasbox        |    2      2  0.1s
+Test Summary: | Pass  Broken  Total  Time
+findcallers   |   20       2     22  2.7s
+     Testing MethodAnalysis tests passed 
 ```
